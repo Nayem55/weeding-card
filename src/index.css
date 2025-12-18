@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, romantic wedding palette */
+    --background: 40 33% 98%;
+    --foreground: 30 10% 20%;
+
+    --card: 40 30% 97%;
+    --card-foreground: 30 10% 20%;
+
+    --popover: 40 30% 97%;
+    --popover-foreground: 30 10% 20%;
+
+    /* Champagne gold primary */
+    --primary: 38 60% 55%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Soft sage secondary */
+    --secondary: 140 20% 85%;
+    --secondary-foreground: 140 25% 25%;
+
+    /* Muted blush */
+    --muted: 20 30% 92%;
+    --muted-foreground: 30 15% 45%;
+
+    /* Rose accent */
+    --accent: 350 45% 75%;
+    --accent-foreground: 350 50% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 38 30% 85%;
+    --input: 38 30% 85%;
+    --ring: 38 60% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom wedding tokens */
+    --gold: 38 60% 55%;
+    --gold-light: 40 55% 75%;
+    --gold-dark: 35 55% 40%;
+    --ivory: 40 33% 98%;
+    --sage: 140 20% 65%;
+    --sage-light: 140 20% 85%;
+    --blush: 350 45% 85%;
+    --rose: 350 45% 65%;
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 40 30% 95%;
+
+    --card: 30 15% 12%;
+    --card-foreground: 40 30% 95%;
+
+    --popover: 30 15% 12%;
+    --popover-foreground: 40 30% 95%;
+
+    --primary: 38 60% 55%;
+    --primary-foreground: 30 15% 10%;
+
+    --secondary: 140 15% 20%;
+    --secondary-foreground: 140 20% 85%;
+
+    --muted: 30 15% 18%;
+    --muted-foreground: 40 20% 65%;
+
+    --accent: 350 35% 35%;
+    --accent-foreground: 350 45% 90%;
+
+    --border: 30 15% 25%;
+    --input: 30 15% 25%;
+    --ring: 38 60% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .text-sage {
+    color: hsl(var(--sage));
+  }
+
+  .bg-sage {
+    background-color: hsl(var(--sage));
+  }
+
+  .bg-sage-light {
+    background-color: hsl(var(--sage-light));
+  }
+
+  .text-rose {
+    color: hsl(var(--rose));
+  }
+
+  .bg-blush {
+    background-color: hsl(var(--blush));
+  }
+
+  .bg-ivory {
+    background-color: hsl(var(--ivory));
+  }
+
+  /* Decorative divider */
+  .divider-ornament {
+    @apply flex items-center justify-center gap-4;
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    @apply h-px w-16 bg-primary/40;
+  }
+
+  /* Gold gradient text */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 50%, hsl(var(--gold)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero overlay */
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      hsla(30, 15%, 10%, 0.3) 0%,
+      hsla(30, 15%, 10%, 0.5) 50%,
+      hsla(30, 15%, 10%, 0.7) 100%
+    );
+  }
+
+  /* Section styling */
+  .section-padding {
+    @apply py-20 md:py-32 px-6;
+  }
+
+  /* Timeline connector */
+  .timeline-line {
+    @apply absolute left-1/2 top-0 bottom-0 w-px bg-primary/30 -translate-x-1/2;
+  }
+
+  /* Countdown box */
+  .countdown-box {
+    @apply flex flex-col items-center justify-center p-4 md:p-6 bg-background/80 backdrop-blur-sm rounded-lg border border-primary/20 min-w-[80px] md:min-w-[100px];
+  }
+
+  /* Event card */
+  .event-card {
+    @apply bg-card rounded-2xl p-8 shadow-lg border border-border hover:shadow-xl transition-shadow duration-300;
+  }
+
+  /* Dress code badge */
+  .dress-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sage-light text-secondary-foreground text-sm font-medium;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .letter-spacing-wide {
+    letter-spacing: 0.3em;
+  }
+
+  .letter-spacing-wider {
+    letter-spacing: 0.5em;
+  }
+}
